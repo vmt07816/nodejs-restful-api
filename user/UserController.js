@@ -8,7 +8,10 @@ var User = require('./User');
 
 // CREATES A NEW USER
 router.post('/', function (req, res) {
+    console.log('post request / recieved');
     console.log(req.body.name);
+    console.log(req);
+    
     User.create({
             name : req.body.name,
             email : req.body.email,
@@ -22,6 +25,8 @@ router.post('/', function (req, res) {
 
 // RETURNS ALL THE USERS IN THE DATABASE
 router.get('/', function (req, res) {
+    console.log('get request / recieved');
+    console.log(req);
     User.find({}, function (err, users) {
         if (err) return res.status(500).send("There was a problem finding the users.");
         res.status(200).send(users);
